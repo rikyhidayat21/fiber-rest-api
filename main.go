@@ -2,8 +2,10 @@ package main
 
 import (
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/rikyhidayat21/fiber-rest-api/database"
+	"github.com/rikyhidayat21/fiber-rest-api/router"
 )
 
 func main() {
@@ -15,6 +17,7 @@ func main() {
 
 	// middleware logger
 	app.Use(logger.New())
+	app.Use(cors.New())
 
 	// Get route
 	app.Get("/", func(c *fiber.Ctx) error {
@@ -22,6 +25,9 @@ func main() {
 			"Hello": "world",
 		})
 	})
+
+	// setup router
+	router.SetupRoutes(app)
 
 	app.Listen(":3000")
 }

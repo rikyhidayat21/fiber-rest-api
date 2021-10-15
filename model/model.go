@@ -8,8 +8,8 @@ import (
 type Note struct {
 	gorm.Model																		// Add some metadata fields to the table
 	ID 					uuid.UUID	`gorm:"type:uuid"`			// Explicitly specify the type
-	Title 			string
-	SubTitle		string
+	Title 				string
+	SubTitle			string
 	Text				string
 
 }
