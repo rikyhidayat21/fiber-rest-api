@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/rikyhidayat21/fiber-rest-api/model"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -34,4 +35,8 @@ func ConnectDB() {
 	}
 
 	fmt.Println("Connection Opened to Database")
+
+	// Migrate the database
+	DB.AutoMigrate(&model.Note{})
+	fmt.Println("Database Migrated")
 }
