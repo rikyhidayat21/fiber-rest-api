@@ -3,11 +3,15 @@ package main
 import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/logger"
+	"github.com/rikyhidayat21/fiber-rest-api/database"
 )
 
 func main() {
 	// inisialisasi fiber
 	app := fiber.New() 
+
+	// Connect to the Database
+	database.ConnectDB()
 
 	// middleware logger
 	app.Use(logger.New())
